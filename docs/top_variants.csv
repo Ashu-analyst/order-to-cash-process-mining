@@ -1,0 +1,16 @@
+cases,share,cum_share,length,variant
+2759,0.5518,0.5518,7,Create Sales Order → Check Credit → Pick Goods → Pack Goods → Ship Goods → Create Invoice → Receive Payment
+529,0.1058,0.6576,9,Create Sales Order → Check Credit → Credit Hold → Release Credit Hold → Pick Goods → Pack Goods → Ship Goods → Create Invoice → Receive Payment
+378,0.0756,0.7332,9,Create Sales Order → Check Credit → Request Price Approval → Approve Price → Pick Goods → Pack Goods → Ship Goods → Create Invoice → Receive Payment
+287,0.0574,0.7906,9,Create Sales Order → Check Credit → Pick Goods → Change Quantity → Pick Goods → Pack Goods → Ship Goods → Create Invoice → Receive Payment
+218,0.0436,0.8341999999999999,3,Create Sales Order → Check Credit → Cancel Order
+144,0.0288,0.863,8,Create Sales Order → Check Credit → Pick Goods → Pack Goods → Ship Goods → Create Invoice → Send Dunning Letter → Receive Payment
+121,0.0242,0.8872,7,Create Sales Order → Check Credit → Pick Goods → Pack Goods → Create Invoice → Ship Goods → Receive Payment
+82,0.0164,0.9036,11,Create Sales Order → Check Credit → Credit Hold → Release Credit Hold → Request Price Approval → Approve Price → Pick Goods → Pack Goods → Ship Goods → Create Invoice → Receive Payment
+70,0.014,0.9176,12,Create Sales Order → Check Credit → Request Price Approval → Approve Price → Change Price → Request Price Approval → Approve Price → Pick Goods → Pack Goods → Ship Goods → Create Invoice → Receive Payment
+55,0.011,0.9286,5,Create Sales Order → Check Credit → Request Price Approval → Approve Price → Cancel Order
+47,0.0094,0.938,5,Create Sales Order → Check Credit → Credit Hold → Release Credit Hold → Cancel Order
+46,0.0092,0.9471999999999999,11,Create Sales Order → Check Credit → Credit Hold → Release Credit Hold → Pick Goods → Change Quantity → Pick Goods → Pack Goods → Ship Goods → Create Invoice → Receive Payment
+45,0.009,0.9561999999999999,11,Create Sales Order → Check Credit → Request Price Approval → Approve Price → Pick Goods → Change Quantity → Pick Goods → Pack Goods → Ship Goods → Create Invoice → Receive Payment
+26,0.0052,0.9613999999999999,10,Create Sales Order → Check Credit → Credit Hold → Release Credit Hold → Pick Goods → Pack Goods → Ship Goods → Create Invoice → Send Dunning Letter → Receive Payment
+24,0.0048,0.9662,10,Create Sales Order → Check Credit → Request Price Approval → Approve Price → Pick Goods → Pack Goods → Ship Goods → Create Invoice → Send Dunning Letter → Receive Payment

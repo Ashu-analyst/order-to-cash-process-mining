@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  analyse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[dev]"
+      - name: Regenerate the event log and re-run the full analysis
+        run: |
+          python scripts/generate_log.py
+          python scripts/analyse.py
+      - run: pytest -q
+      - name: Findings summary
+        run: |
+          python - <<'EOF' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          r = json.load(open("docs/results.json"))
+          print("## Order-to-cash process mining: findings\n")
+          print(f"{r['log']['cases']:,} orders · {r['log']['events']:,} events · {r['log']['variants']} variants · "
+                f"happy path {r['variants']['happy_path_share']:.0%} · touchless {r['touchless_rate']:.0%}\n")
+          print("### Biggest waits\n\n| Step | Cases | Median wait | Total wait |\n|---|---|---|---|")
+          for b in r["bottlenecks"][:5]:
+              print(f"| {b['edge']} | {b['cases']:,} | {b['median_wait_h']} h | {b['total_wait_h']/24:,.0f} days |")
+          print("\n### Conformance\n\n| Rule | Checked | Violations | Compliant |\n|---|---|---|---|")
+          for c in r["conformance"]:
+              print(f"| {c['rule']} | {c['checked']:,} | {c['violations']} | {c['fitness']:.1%} |")
+          print("\n### Automation candidates\n\n| Candidate | Orders | Waiting removed |\n|---|---|---|")
+          for a in r["automation_candidates"]:
+              print(f"| {a['candidate']} | {a['cases']:,} | {a['wait_days_removed']:,.0f} days |")
+          EOF
